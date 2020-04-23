@@ -157,7 +157,12 @@
 </style>
 </head>
 <body>
-
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+	<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+type="text/css"
+/>
   <div id="info">
     <div id="info-content">
       <h3>Welcome to</h3>
@@ -198,17 +203,17 @@
     }
   }
 
-	mapboxgl.accessToken = 'pk.eyJ1IjoiZGNoYXJ2ZXkiLCJhIjoiY2ltemVpNjY1MDRlanVya2szYzlnM2dxcyJ9.im9EDlP7YIYefEt_wz2fww';
+	mapboxgl.accessToken = 'pk.eyJ1IjoiaG9sZGVubXQxMSIsImEiOiJYMXNtNE5RIn0.Gg7JM4pb0iiGUfEZrxnEYw';
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/dcharvey/ck90r78ib0hnp1jnz9bwleg7h',
-    center: [-74.005, 40.714],
+    style: 'pk.eyJ1IjoiaG9sZGVubXQxMSIsImEiOiJYMXNtNE5RIn0.Gg7JM4pb0iiGUfEZrxnEYw',
+    center: [-77.0369, 38.9072],
     zoom: 13,
   	maxZoom: 22,
   	minZoom: 13,
 		maxBounds: [
-			[-74.33, 40.41], // Southwest coordinates
-			[-73.63, 40.98] // Northeast coordinates
+			[-77.11979522, 38.79164435], // Southwest coordinates
+			[-76.867218, 39.031386] // Northeast coordinates
 		],
 		hash: true
   });
