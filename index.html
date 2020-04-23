@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Sidewalk Widths NYC</title>
+<title>Sidewalk Widths DC</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link rel='icon' href='favicon.ico?' type='image/x-icon'/ >
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
@@ -30,8 +30,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px;
-    color: #a6c1d2;
-    background-color: #0b0d13;
+    color: #000000;
+    background-color: #d3d3d4;
     z-index: 1000;
     border-radius: 20px;
   }
@@ -58,21 +58,21 @@
   }
   #info-button button {
     padding: 0.5em;
-    color: #cfedff;
+    color: #ffffff;
     font-size: 1.25em;
     font-weight: bold;
-    background-color: #1b3e6f;
+    background-color: #c41230;
     outline: 0;
     border: 0;
     border-radius: 10px;
   }
   #info-button button:hover {
-    background-color: #a99521;
+    background-color: #153054;
     transition: 0.1s ease-in-out;
   }
   #open-info {
     position: fixed;
-    background-color: #1b3e6f;
+    background-color: #c41230;
     margin-left: 10px;
     margin-top: 10px;
     width: 40px;
@@ -86,37 +86,37 @@
   #open-info h2 {
     font-family: "Times New Roman", Times, serif;
     font-weight: bold;
-    color: #cfedff;
+    color: #ffffff;
     margin-top: 8px;
   }
   #open-info:hover {
-    background-color: #a99521;
+    background-color: #153054;
     transition: 0.1s ease-in-out;
   }
 	a:link {
-		color: #3d77ca;
+		color: #c41230;
 		text-decoration: none;
 	}
 	a:visited {
-		color: #3d77ca;
+		color: #c41230;
 		text-decoration: none;
 	}
 	a:hover {
-		color: #a99521;
+		color: #153054;
 	  text-decoration: underline;
 	}
 	a:active {
-		color: #a99521;
+		color: #c41230;
 	  text-decoration: underline;
 	}
 	.mapboxgl-ctrl-group {
-    background: #1b3e6f;
+    background: #c41230;
 	}
 	.mapboxgl-ctrl-group button+button {
     border-top: 1px solid #000;
 	}
 	.mapboxgl-ctrl button:not(:disabled):hover {
-    background-color: #a99521;
+    background-color: #153054;
 		transition: 0.1s ease-in-out;
 	}
 	.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon {
@@ -158,7 +158,7 @@
 </head>
 <body>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
-	<link
+<link
 rel="stylesheet"
 href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
 type="text/css"
@@ -166,11 +166,14 @@ type="text/css"
   <div id="info">
     <div id="info-content">
       <h3>Welcome to</h3>
-      <h1>Sidewalk Widths NYC</h1>
-      <p>This map is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing. Widths were determined from <a href="https://data.cityofnewyork.us/City-Government/Sidewalk/vfx9-tbb6">New York City's Sidewalk dataset</a> which was not verfied for accuracy or completeness.</p>
-			<p>To learn more about how this dataset was produced, visit the <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p>
+      <h1>Sidewalk Widths DC</h1>
+      <p>This map was inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> and is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing.</p> 
+	  <p>Widths were determined from <a href="https://opendata.dc.gov/datasets/sidewalks">the District of Columbia's Sidewalk dataset</a>, last updated in 2019. The data has not been verfied for accuracy or completeness.</p>
+			<p>This data set was developed using a methodology adapted from Meli Harvey's <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p>
+		<p>If you know of places where sidewalks should be widened to help promote public health and safety, please contact your <a href="https://dcgis.maps.arcgis.com/apps/InformationLookup/index.html?appid=8b54d6b6dc1041f3a4c5de125d7c9580">ANC Member</a> or <a href="https://dccouncil.us/councilmembers/">District Council Person</a>.
       <p><small>DISCLAIMER<br>
-      Do not use this map to make decisions that impact your health or safety. Other important factors like sidewalk obstructions and pedestrian activity are not accounted for in this dataset.</small></p>
+	  This map is meant to highlight areas of the District that have disproportinately narrow sidewalks and could benefit from improving pedestrian conditions. Actual sidewalk and road conditions, as well as an sidewalk obstructions are not accounted for in the dataset. 
+      Do not use this map to make decisions that impact your health or safety.</small></p>
     </div>
     <div id="info-button" onclick="closeInfo()">
       <button>Explore the Map</button>
@@ -206,19 +209,22 @@ type="text/css"
 	mapboxgl.accessToken = 'pk.eyJ1IjoiaG9sZGVubXQxMSIsImEiOiJYMXNtNE5RIn0.Gg7JM4pb0iiGUfEZrxnEYw';
   var map = new mapboxgl.Map({
     container: 'map',
-    style: 'pk.eyJ1IjoiaG9sZGVubXQxMSIsImEiOiJYMXNtNE5RIn0.Gg7JM4pb0iiGUfEZrxnEYw',
+    style: 'mapbox://styles/holdenmt11/ck9d297nt13t21ipbd0epqs8s',
     center: [-77.0369, 38.9072],
-    zoom: 13,
+    zoom: 8,
   	maxZoom: 22,
-  	minZoom: 13,
+  	minZoom: 8,
 		maxBounds: [
-			[-77.11979522, 38.79164435], // Southwest coordinates
-			[-76.867218, 39.031386] // Northeast coordinates
+			[-77.13979522, 38.78164435], // Southwest coordinates
+			[-76.877218, 39.010386] // Northeast coordinates
 		],
 		hash: true
   });
-
+	map.addControl(new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl}));
 	map.addControl(new mapboxgl.NavigationControl());
+
 
   map.on('load', function() {
     // Insert the layer beneath any symbol layer.
