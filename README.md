@@ -7,7 +7,7 @@ Sidewalk Widths DC uses [Washington DC's](https://opendata.dc.gov/datasets/sidew
 This repo contains the notebooks to reproduce this work, as well as the finished Sidewalk Width dataset in GeoJSON format.
 
 ## Link
-[www.sidewalkwidths.dc](http://www.sidewalkwidths.dc)
+[www.sidewalkwidthsdc.net](http://sidewalkwidthsdc.net/)
 
 ## Methodology
 
