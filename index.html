@@ -167,12 +167,12 @@ type="text/css"
     <div id="info-content">
       <h3>Welcome to</h3>
       <h1>Sidewalk Widths DC</h1>
-      <p>This map was inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> and is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing.</p> 
+      <p>This map was inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> and is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing.</p>
 	  <p>Widths were determined from <a href="https://opendata.dc.gov/datasets/sidewalks">the District of Columbia's Sidewalk dataset</a>, last updated in 2019. The data has not been verfied for accuracy or completeness.</p>
 			<p>This data set was developed using a methodology adapted from Meli Harvey's <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p>
 		<p>If you know of places where sidewalks should be widened to help promote public health and safety, please contact your <a href="https://dcgis.maps.arcgis.com/apps/InformationLookup/index.html?appid=8b54d6b6dc1041f3a4c5de125d7c9580">ANC Member</a> or <a href="https://dccouncil.us/councilmembers/">District Council Person</a>.
       <p><small>DISCLAIMER<br>
-	  This map is meant to highlight areas of the District that have disproportinately narrow sidewalks and could benefit from improving pedestrian conditions. Actual sidewalk and road conditions, as well as an sidewalk obstructions are not accounted for in the dataset. 
+	  This map is meant to highlight areas of the District that have disproportinately narrow sidewalks and could benefit from improving pedestrian conditions. Actual sidewalk and road conditions, as well as an sidewalk obstructions are not accounted for in the dataset.
       Do not use this map to make decisions that impact your health or safety.</small></p>
     </div>
     <div id="info-button" onclick="closeInfo()">
@@ -227,21 +227,6 @@ type="text/css"
 
 
   map.on('load', function() {
-    // Insert the layer beneath any symbol layer.
-    var layers = map.getStyle().layers;
-
-    var labelLayerId;
-    for (var i = 0; i < layers.length; i++) {
-      if (layers[i].type === 'symbol') {
-        labelLayerId = layers[i].id;
-        break;
-      }
-    }
-
-		// map.addSource('sidewalks', {
-		//    type: 'geojson',
-		//    data: './sidewalkwidths_nyc.geojson'
-		// });
 
 		map.addSource('sidewalks', {
 			 type: 'vector',
@@ -277,7 +262,7 @@ type="text/css"
         'line-opacity': 1,
       },
     },
-    labelLayerId
+    'road-label'
     );
 
     map.addLayer(
@@ -313,7 +298,7 @@ type="text/css"
         ]
       }
     },
-    labelLayerId
+    'road-label'
     );
 
     var popup = new mapboxgl.Popup({
