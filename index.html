@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>Sidewalk Widths DC</title>
+<title>Charlotte Shared Streets</title>
 <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
 <link rel='icon' href='favicon.ico?' type='image/x-icon'/ >
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
@@ -35,6 +35,20 @@
     z-index: 1000;
     border-radius: 20px;
   }
+    #info-legendBox {
+    position: fixed;
+    width: 80%;
+    max-width: 400px;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    color: #000000;
+    background-color: #d3d3d4;
+    z-index: 1000;
+    border-radius: 20px;
+  }
   #info-content {
     width: 100%;
     height: 80%;
@@ -48,6 +62,24 @@
     margin-bottom: 0;
   }
   #info-content p {
+    width: 100%;
+    overflow: auto;
+  }
+  
+
+  #info-legend {
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    font-size: 1em;
+  }
+  #info-legend h1 {
+    margin-top: 0;
+  }
+  #info-legend h3 {
+    margin-bottom: 0;
+  }
+  #info-legend p {
     width: 100%;
     overflow: auto;
   }
@@ -67,6 +99,25 @@
     border-radius: 10px;
   }
   #info-button button:hover {
+    background-color: #153054;
+    transition: 0.1s ease-in-out;
+  }
+    #info-button2 {
+    height: 50px;
+    padding: 1em;
+    text-align: center;
+  }
+  #info-button2 button {
+    padding: 0.5em;
+    color: #ffffff;
+    font-size: 1.25em;
+    font-weight: bold;
+    background-color: #c41230;
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+  }
+  #info-button2 button:hover {
     background-color: #153054;
     transition: 0.1s ease-in-out;
   }
@@ -90,6 +141,30 @@
     margin-top: 8px;
   }
   #open-info:hover {
+    background-color: #153054;
+    transition: 0.1s ease-in-out;
+  }
+  
+    #open-legend {
+    position: fixed;
+    background-color: #c41230;
+    margin-left: 60px;
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    outline: 0;
+    border: 0;
+    border-radius: 20px;
+    z-index: 2000;
+  }
+  #open-legend h2 {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 8px;
+  }
+  #open-legend:hover {
     background-color: #153054;
     transition: 0.1s ease-in-out;
   }
@@ -153,6 +228,45 @@
     margin-bottom: 0.2em;
     font-size: 1.5em;
   }
+  #menu {
+background: #fff;
+position: absolute;
+z-index: 2000;
+top: 55px;
+right: 50px;
+width: 120px;
+border: 0;
+font-family: 'Open Sans', sans-serif;
+}
+ 
+#menu a {
+font-size: 13px;
+color: #404040;
+display: block;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: none;
+border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+text-align: center;
+}
+ 
+#menu a:last-child {
+border: none;
+}
+ 
+#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}
+ 
+#menu a.active {
+background-color: #c41230;
+color: #ffffff;
+}
+ 
+#menu a.active:hover {
+background: #153054;
 
 </style>
 </head>
@@ -163,26 +277,34 @@ rel="stylesheet"
 href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
 type="text/css"
 />
-  <div id="info">
+<nav id="menu"></nav>
+  <div id="info" style='display:block'>
     <div id="info-content">
       <h3>Welcome to</h3>
-      <h1>Sidewalk Widths DC</h1>
-      <p>This map was inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> and is intended to give an impression of how sidewalk widths impact the ability of pedestrians to practice social distancing.</p>
-	  <p>Widths were determined from <a href="https://opendata.dc.gov/datasets/sidewalks">the District of Columbia's Sidewalk dataset</a>, last updated in 2019. The data has not been verfied for accuracy or completeness.</p>
-			<p>This data set was developed using a methodology adapted from Meli Harvey's <a href="https://www.github.com/meliharvey/sidewalkwidths-nyc">GitHub page</a>.</p>
-		<p>If you know of places where sidewalks should be widened to help promote public health and safety, please contact your <a href="https://dcgis.maps.arcgis.com/apps/InformationLookup/index.html?appid=8b54d6b6dc1041f3a4c5de125d7c9580">ANC Member</a> or <a href="https://dccouncil.us/councilmembers/">District Council Person</a>.
-      <p><small>DISCLAIMER<br>
-	  This map is meant to highlight areas of the District that have disproportinately narrow sidewalks and could benefit from improving pedestrian conditions. Actual sidewalk and road conditions, as well as an sidewalk obstructions are not accounted for in the dataset.
-      Do not use this map to make decisions that impact your health or safety.</small></p>
+      <h1>Charlotte Shared Streets</h1>
+	  
+	  <p>Beginning May 9, 2019, the City of Charlotte is launching the <a href="https://charlottenc.gov/Transportation/Programs/Pages/CharlotteSharedStreets.aspx">Shared Streets</a> program, closing certain streets to through traffic and opening them to walking, wheelchair rolling, skateboarding, and rollerblading.</p>
+      <p>This map highlights streets that may meet the city's eligiblity criteria of low speed (under 30 mph), non-thouroughfare streets that are at least 1/2 mile and connect to parks, greenways, or bikelanes.</p>
+	  <p>Inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> the map also highlights the widths of sidewalks throughout the city. Placing sidewalk widths next to streets that meet the Shared Street criteria may help further prioritize areas of the city most in need of additional space for social distancing.</p>
+	  
+	  
+	  
+	  
+	  <p><small><b>DISCLAIMER</b><br>
+	  <p>Sidewalk Widths and road characteristics were determined from the City of Charlotte's <a href="https://data.charlottenc.gov/datasets/sidewalks">Sidewalk dataset</a> and Mcklenburg County's Road <a href="http://maps.co.mecklenburg.nc.us/openmapping/data.html">Centerline dataset.</a> The data has not been verfied for accuracy or completeness. Actual sidewalk and road conditions, as well as sidewalk obstructions are not accounted for in the dataset. If you know of streets that should be added to the Shared Streets list, or areas where sidewalks need improvement please contact <a href="mailto:CharlotteDOT@charlottenc.gov">CharlotteDOT@charlottenc.gov</a>.</p>
+
+</small></p>
     </div>
     <div id="info-button" onclick="closeInfo()">
       <button>Explore the Map</button>
     </div>
   </div>
 
+
   <button id="open-info" onclick="openInfo()">
     <h2>i</h2>
   </button>
+  
 
   <div id="map"></div>
 
@@ -210,13 +332,13 @@ type="text/css"
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/holdenmt11/ck9d297nt13t21ipbd0epqs8s',
-    center: [-77.0369, 38.9072],
-    zoom: 15,
+    center: [-80.8431, 35.2271],
+    zoom: 14,
   	maxZoom: 22,
   	minZoom: 6,
 		maxBounds: [
-			[-77.13979522, 38.78164435], // Southwest coordinates
-			[-76.877218, 39.010386] // Northeast coordinates
+			[-81.085992,35.00062], // Southwest coordinates
+			[-80.479111,35.481714] // Northeast coordinates 
 		],
 		hash: true
   });
@@ -230,14 +352,14 @@ type="text/css"
 
 		map.addSource('sidewalks', {
 			 type: 'vector',
-			 url: 'mapbox://holdenmt11.9i4ugggb'
+			 url: 'mapbox://holdenmt11.7qrm6kbp'
 		});
 
     map.addLayer({
       'id': 'sidewalks',
       'type': 'line',
       'source': 'sidewalks',
-			'source-layer': 'DCMapBox-3swspc',
+			'source-layer': 'CharlotteSidewalks_project-3ycuut',
       'layout': {
         'line-cap': 'round',
       },
@@ -246,13 +368,13 @@ type="text/css"
           'interpolate',
           ['linear'],
           ['zoom'],
-          14, 1,
-          19, 10,
+          14, 0.5,
+          19, 8,
         ],
         'line-color': [
           'interpolate',
           ['linear'],
-          ['get', 'width'],
+          ['get', 'WIDTH'],
           0, '#d7191c',
           6, '#d7191c',
           12, '#bab849',
@@ -264,6 +386,45 @@ type="text/css"
     },
     'road-label'
     );
+	
+			map.addSource('roads', {
+			 type: 'vector',
+			 url: 'mapbox://holdenmt11.9gv2d482'
+		});
+	
+    map.addLayer({
+      'id': 'roads',
+      'type': 'line',
+      'source': 'roads',
+			'source-layer': 'CharlotteTileStreets_Project-1eprxd',
+      'layout': {
+        'line-cap': 'round',
+      },
+		'paint':{
+		'line-width':[
+          'interpolate',
+          ['linear'],
+          ['zoom'],
+          14, 2,
+          19, 12,
+        ],
+        'line-color': [
+			'match',
+          ['get', 'SharePrior'],
+		  'Other Streets', '#252525',
+		  'Priority 3', '#d7191c',
+		  'Priority 2', '#bab849',
+		  'Priority 1', '#03fc7b',
+          'Potential Shared Street', '#03a1fc',
+		  '#252525'
+        ],
+        'line-opacity': 1,
+      },
+    },
+    'road-label'
+    );
+	
+
 
     map.addLayer(
       {
@@ -301,7 +462,7 @@ type="text/css"
     'road-label'
     );
 
-    var popup = new mapboxgl.Popup({
+var popup = new mapboxgl.Popup({
       closeButton: false,
       closeOnClick: false
     });
@@ -310,7 +471,7 @@ type="text/css"
 
       map.getCanvas().style.cursor = 'pointer';
 
-      var lineWidth = e.features[0].properties.width
+      var lineWidth = e.features[0].properties.WIDTH
       var lineColor = e.features[0].layer.paint['line-color']
       var coordinates = e.lngLat;
 
@@ -382,10 +543,126 @@ type="text/css"
     map.on('mouseleave', 'sidewalks', function() {
       map.getCanvas().style.cursor = '';
       popup.remove();
+	  });
+	  
+	  var popups = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false
+    });
+	
+	function addPopup1(e) {
+
+      map.getCanvas().style.cursor = 'pointer';
+
+      var linePrior = e.features[0].properties.SharePrior
+	  var lineReason=e.features[0].properties.ShareST
+      var lineColor1 = e.features[0].layer.paint['line-color']
+      var coordinates1 = e.lngLat;
+	   
+      if (linePrior == 'Potential Shared Street') {
+        var message1 = 'Shared Street'
+        var lineColor1 = '#03a1fc'
+      } else if (linePrior == 'Priority 1') {
+        var message1 = 'High Potential'
+        var lineColor1 = '#03fc7b'
+			} else if (linePrior == 'Priority 2') {
+        var message1 = 'Medium Potential'
+        var lineColor1 = '#bab849'
+      } else if (linePrior == 'Priority 3') {
+        var message1 = 'Lower Potential'
+        var lineColor1 = '#a7ed2d'
+      } else {
+        var message1 = 'Lowest Potential'
+        var lineColor1 = '#ffffff'
+      }
+
+      var description1 = (
+        '<div class="name">Shared Street Priorities</div>' +
+        '<div class="width">' + message1 )+ '</div>' +
+        '<div class="message">' + lineReason + '</div>'
+
+      popups.setLngLat(coordinates1)
+      popups.setHTML(description1)
+      popups.addTo(map)
+	  
+	  
+
+      popups._content.style.color = lineColor1
+      popups._content.style.borderColor = lineColor1
+
+			if (popups._tip.offsetParent.className.includes('mapboxgl-popup-anchor-bottom')) {
+				popups._tip.style.borderTopColor = lineColor1
+			}
+			if (popups._tip.offsetParent.className.includes('mapboxgl-popup-anchor-top')) {
+	      popups._tip.style.borderBottomColor = lineColor1
+			}
+			if (popups._tip.offsetParent.className.includes('mapboxgl-popup-anchor-right')) {
+				popups._tip.style.borderLeftColor = lineColor1
+			}
+			if (popups._tip.offsetParent.className.includes('mapboxgl-popup-anchor-left')) {
+				popups._tip.style.borderRightColor = lineColor1
+			}
+
+      popups.addTo(map)
+    }
+
+    map.on('touchstart', 'roads', function(e) {
+      addPopup1(e);
+    })
+
+    map.on('mousemove', 'roads', function(e) {
+      addPopup1(e);
     });
 
-  });
+    map.on('mouseleave', 'roads', function() {
+      map.getCanvas().style.cursor = '';
+      popups.remove();
+    });
+	    map.on('mouseleave', 'sidewalks', function() {
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+	  });
 
+	  
+	  
+  
+	  
+
+
+  });
+  
+  
+var toggleableLayerIds = ['roads', 'sidewalks'];
+ 
+// set up the corresponding toggle button for each layer
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+var id = toggleableLayerIds[i];
+ 
+var link = document.createElement('a');
+link.href = '#';
+link.className = 'active';
+link.textContent = 'Show '+id;
+ 
+link.onclick = function(e) {
+var clickedLayer = this.textContent;
+e.preventDefault();
+e.stopPropagation();
+ 
+var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+ 
+// toggle layer visibility by changing the layout object's visibility property
+if (visibility === 'visible') {
+map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+this.className = '';
+} else {
+this.className = 'active';
+map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+}
+};
+ 
+var layers = document.getElementById('menu');
+layers.appendChild(link);
+}
   </script>
 
 </body>
