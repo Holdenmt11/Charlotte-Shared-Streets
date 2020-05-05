@@ -102,25 +102,7 @@
     background-color: #153054;
     transition: 0.1s ease-in-out;
   }
-    #info-button2 {
-    height: 50px;
-    padding: 1em;
-    text-align: center;
-  }
-  #info-button2 button {
-    padding: 0.5em;
-    color: #ffffff;
-    font-size: 1.25em;
-    font-weight: bold;
-    background-color: #c41230;
-    outline: 0;
-    border: 0;
-    border-radius: 10px;
-  }
-  #info-button2 button:hover {
-    background-color: #153054;
-    transition: 0.1s ease-in-out;
-  }
+
   #open-info {
     position: fixed;
     background-color: #c41230;
@@ -221,7 +203,7 @@
   .mapboxgl-popup-content .width {
     margin: 0;
     margin-bottom: 0.2em;
-    font-size: 2.5em;
+    font-size: 2.0em;
   }
   .mapboxgl-popup-content .message {
     margin: 0;
@@ -267,6 +249,51 @@ color: #ffffff;
  
 #menu a.active:hover {
 background: #153054;
+}
+
+.legend {
+
+top: 140px;
+
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+z-index: 1;
+}
+ 
+.legend h4 {
+margin: 0 0 10px;
+}
+ 
+.legend div span {
+
+display: inline-block;
+height: 5px;
+margin-right: 5px;
+width: 10px;
+}
+
+.legend2 {
+top: 380px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+padding: 10px;
+position: absolute;
+
+z-index: 1;
+}
+ 
+.legend2 h4 {
+margin: 0 0 10px;
+}
+ 
+.legend2 div span {
+border-radius: 50%;
+display: inline-block;
+height: 5px;
+margin-right: 5px;
+width: 10px;
+}
+
 
 </style>
 </head>
@@ -283,7 +310,7 @@ type="text/css"
       <h3>Welcome to</h3>
       <h1>Charlotte Shared Streets</h1>
 	  
-	  <p>Beginning May 9, 2019, the City of Charlotte is launching the <a href="https://charlottenc.gov/Transportation/Programs/Pages/CharlotteSharedStreets.aspx">Shared Streets</a> program, closing certain streets to through traffic and opening them to walking, wheelchair rolling, skateboarding, and rollerblading.</p>
+	  <p>The City of Charlotte is launching the <a href="https://charlottenc.gov/Transportation/Programs/Pages/CharlotteSharedStreets.aspx">Shared Streets</a> program, closing certain streets to through traffic and opening them to walking, wheelchair rolling, skateboarding, and rollerblading.</p>
       <p>This map highlights streets that may meet the city's eligiblity criteria of low speed (under 30 mph), non-thouroughfare streets that are at least 1/2 mile and connect to parks, greenways, or bikelanes.</p>
 	  <p>Inspired by <a href="https://www.sidewalkwidths.nyc/">sidewalkwidths.nyc</a> the map also highlights the widths of sidewalks throughout the city. Placing sidewalk widths next to streets that meet the Shared Street criteria may help further prioritize areas of the city most in need of additional space for social distancing.</p>
 	  
@@ -291,7 +318,7 @@ type="text/css"
 	  
 	  
 	  <p><small><b>DISCLAIMER</b><br>
-	  <p>Sidewalk Widths and road characteristics were determined from the City of Charlotte's <a href="https://data.charlottenc.gov/datasets/sidewalks">Sidewalk dataset</a> and Mcklenburg County's Road <a href="http://maps.co.mecklenburg.nc.us/openmapping/data.html">Centerline dataset.</a> The data has not been verfied for accuracy or completeness. Actual sidewalk and road conditions, as well as sidewalk obstructions are not accounted for in the dataset. If you know of streets that should be added to the Shared Streets list, or areas where sidewalks need improvement please contact <a href="mailto:CharlotteDOT@charlottenc.gov">CharlotteDOT@charlottenc.gov</a>.</p>
+	  <p>Sidewalk Widths and road characteristics were determined from the City of Charlotte's <a href="https://data.charlottenc.gov/datasets/sidewalks">Sidewalk dataset</a> and Mcklenburg County's Road <a href="http://maps.co.mecklenburg.nc.us/openmapping/data.html">Centerline dataset.</a> Actual sidewalk and road conditions, as well as sidewalk obstructions are not accounted for in the dataset. If you know of streets that should be added to the Shared Streets list, or areas where sidewalks need improvement please contact <a href="mailto:CharlotteDOT@charlottenc.gov">CharlotteDOT@charlottenc.gov</a>.</p>
 
 </small></p>
     </div>
@@ -299,10 +326,55 @@ type="text/css"
       <button>Explore the Map</button>
     </div>
   </div>
+  
+    <div id="info-legendBox" style='display:none'>
+    <div id="info-content">
+     
+      <h3>Shared Street Priorities</h3>
+	  <div class="legend">
+	  <div><span style="background-color: #ffffff"></span>Shared Street Identified by Charlotte DOT</div>
+<div><span style="background-color: #03a1fc"></span>Highest Potential</div>
+<div><span style="background-color: #225ea8"></span>High Potential</div>
+<div><span style="background-color: #41b6c4"></span>Medium Potential</div>
+<div><span style="background-color: #a1dab4"></span>Lower Potential</div>
+<div><span style="background-color: #000000"></span>Lowest Potential</div></div>
+	  <div class="legend2">
+	  <div><span style="background-color: #03a1fc"></span>Very Easy</div>
+<div><span style="background-color: #03fc7b"></span>Easy</div>
+<div><span style="background-color: #34e059"></span>Somewhat Easy</div>
+<div><span style="background-color: #a7ed2d"></span>Somewhat Difficult</div>
+<div><span style="background-color: #bab849"></span>Difficult</div>
+<div><span style="background-color: #de873c"></span>Very Difficult</div>
+<div><span style="background-color: #d7191c"></span>Impossible</div>
+</div>
+
+	  
+	  <p>Potential for shared street designation is based off the Charlotte DOT's eligibility <a href="https://charlottenc.gov/Transportation/Programs/Pages/CharlotteSharedStreets.aspx">guidelines.</a></p>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+	  <br>
+
+	  <h3>Sidewalk Width</h3>
+	  <p>Sidewalks are categorized by ease of social distancing, based off their recorded width from Charlotte's <a href="https://data.charlottenc.gov/datasets/baccd6e83e7348199d891a3b440556ba_44">sidewalk</a> dataset.
+	  
+	  
+    </div>
+    <div id="info-button" onclick="closeLegend()">
+      <button>Return to the Map</button>
+    </div>
+	</div>
+
 
 
   <button id="open-info" onclick="openInfo()">
     <h2>i</h2>
+  </button>
+  <button id="open-legend" onclick="openLegend()">
+    <h2>l</h2>
   </button>
   
 
@@ -321,6 +393,24 @@ type="text/css"
 
   function openInfo() {
     var x = document.getElementById("info");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+  
+    function closeLegend() {
+    var x = document.getElementById("info-legendBox");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function openLegend() {
+    var x = document.getElementById("info-legendBox");
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {
@@ -411,11 +501,11 @@ type="text/css"
         'line-color': [
 			'match',
           ['get', 'SharePrior'],
-		  'Other Streets', '#252525',
-		  'Priority 3', '#d7191c',
-		  'Priority 2', '#bab849',
-		  'Priority 1', '#03fc7b',
-          'Potential Shared Street', '#03a1fc',
+		  'Potential Shared Street', '#ffffff',
+		  'Priority 1', '#03a1fc',
+		  'Priority 2', '#225ea8',
+		  'Priority 3', '#41b6c4',
+          'Priority 4', '#a1dab4',
 		  '#252525'
         ],
         'line-opacity': 1,
@@ -423,8 +513,6 @@ type="text/css"
     },
     'road-label'
     );
-	
-
 
     map.addLayer(
       {
@@ -475,32 +563,32 @@ var popup = new mapboxgl.Popup({
       var lineColor = e.features[0].layer.paint['line-color']
       var coordinates = e.lngLat;
 
-      if (lineWidth < 8) {
-        var message = 'This path is too narrow for social distancing.'
+      if (lineWidth < 6) {
+        var message = 'Social distancing will be impossible on this path.'
         var lineColor = '#d7191c'
-      } else if (lineWidth >= 8 && lineWidth < 10) {
-        var message = 'This path is too narrow for social distancing.'
+      } else if (lineWidth >= 6 && lineWidth < 10) {
+        var message = 'Social distancing will be very difficult on this path.'
         var lineColor = '#de873c'
 			} else if (lineWidth >= 10 && lineWidth < 12) {
-        var message = 'Social distancing may be difficult on this path.'
+        var message = 'Social distancing will be difficult on this path.'
         var lineColor = '#bab849'
       } else if (lineWidth >= 12 && lineWidth < 14) {
-        var message = 'Social distancing may be difficult on this path.'
+        var message = 'Social distancing may be somewhat difficult on this path.'
         var lineColor = '#a7ed2d'
 			} else if (lineWidth >= 14 && lineWidth < 16) {
-				var message = 'Social distancing should be possible on this path.'
+				var message = 'Social distancing may be somewhat easy on this path.'
 				var lineColor = '#65c334'
 			} else if (lineWidth >= 16 && lineWidth < 18) {
-				var message = 'Social distancing should be possible on this path.'
+				var message = 'Social distancing may be somewhat easy on this path.'
 				var lineColor = '#34e059'
 			} else if (lineWidth >= 18 && lineWidth < 20) {
 				var message = 'Social distancing should be easy on this path.'
 				var lineColor = '#03fc72'
 			} else if (lineWidth >= 22 && lineWidth < 24) {
-				var message = 'Social distancing should be easy on this path.'
+				var message = 'Social distancing should be very easy on this path.'
 				var lineColor = '#03fcda'
       } else {
-        var message = 'This path is great for social distancing!'
+        var message = 'Social distancing should be very easy on this path.'
         var lineColor = '#03a1fc'
       }
 
@@ -555,26 +643,30 @@ var popup = new mapboxgl.Popup({
       map.getCanvas().style.cursor = 'pointer';
 
       var linePrior = e.features[0].properties.SharePrior
-	  var lineReason=e.features[0].properties.ShareST
+	  var lineReason=e.features[0].properties.Definition
       var lineColor1 = e.features[0].layer.paint['line-color']
       var coordinates1 = e.lngLat;
 	   
       if (linePrior == 'Potential Shared Street') {
         var message1 = 'Shared Street'
-        var lineColor1 = '#03a1fc'
+        var lineColor1 = '#ffffff'
       } else if (linePrior == 'Priority 1') {
-        var message1 = 'High Potential'
-        var lineColor1 = '#03fc7b'
+        var message1 = 'Highest Potential'
+        var lineColor1 = '#03a1fc'
 			} else if (linePrior == 'Priority 2') {
-        var message1 = 'Medium Potential'
-        var lineColor1 = '#bab849'
+        var message1 = 'High Potential'
+        var lineColor1 = '#225ea8'
       } else if (linePrior == 'Priority 3') {
+        var message1 = 'Medium Potential'
+        var lineColor1 = '#41b6c4'
+		} else if (linePrior == 'Priority 4') {
         var message1 = 'Lower Potential'
-        var lineColor1 = '#a7ed2d'
+        var lineColor1 = '#a1dab4'
       } else {
         var message1 = 'Lowest Potential'
-        var lineColor1 = '#ffffff'
+        var lineColor1 = '#ffffcc'
       }
+
 
       var description1 = (
         '<div class="name">Shared Street Priorities</div>' +
@@ -641,7 +733,7 @@ var id = toggleableLayerIds[i];
 var link = document.createElement('a');
 link.href = '#';
 link.className = 'active';
-link.textContent = 'Show '+id;
+link.textContent = id;
  
 link.onclick = function(e) {
 var clickedLayer = this.textContent;
