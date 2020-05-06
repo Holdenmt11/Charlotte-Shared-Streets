@@ -644,6 +644,7 @@ var popup = new mapboxgl.Popup({
 
       var linePrior = e.features[0].properties.SharePrior
 	  var lineReason=e.features[0].properties.Definition
+	  var lineName =e.features[0].properties.wholestnam
       var lineColor1 = e.features[0].layer.paint['line-color']
       var coordinates1 = e.lngLat;
 	   
@@ -670,6 +671,7 @@ var popup = new mapboxgl.Popup({
 
       var description1 = (
         '<div class="name">Shared Street Priorities</div>' +
+		'<div class="name">'+ lineName +'</div>' +
         '<div class="width">' + message1 )+ '</div>' +
         '<div class="message">' + lineReason + '</div>'
 
